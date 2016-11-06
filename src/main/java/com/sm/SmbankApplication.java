@@ -7,6 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SmbankApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SmbankApplication.class, args);
+		SpringApplication.run(SmbankApplication.class, args);J
 	}
 }
