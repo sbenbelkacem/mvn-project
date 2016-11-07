@@ -16,20 +16,25 @@ public class Client implements Serializable {
 	private String prenomClient;
 	@OneToMany(mappedBy="client",fetch=FetchType.LAZY)
 	private Collection<Compte> comptes;
+	private Long identifiant;
+	private String password;
 	
 	public Client() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Client(Long codeClient, String nomClient, String prenomClient, Collection<Compte> comptes) {
+	public Client(Long codeClient, String nomClient, String prenomClient, Collection<Compte> comptes, Long identifiant,
+			String password) {
 		super();
 		this.codeClient = codeClient;
 		this.nomClient = nomClient;
 		this.prenomClient = prenomClient;
 		this.comptes = comptes;
+		this.identifiant = identifiant;
+		this.password = password;
 	}
-	
+
 	public Long getCodeClient() {
 		return codeClient;
 	}
@@ -46,6 +51,23 @@ public class Client implements Serializable {
 		this.nomClient = nomClient;
 	}
 	
+	
+	public Long getIdentifiant() {
+		return identifiant;
+	}
+
+	public void setIdentifiant(Long identifiant) {
+		this.identifiant = identifiant;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public String getPrenomClient() {
 		return prenomClient;
 	}
@@ -60,5 +82,11 @@ public class Client implements Serializable {
 	
 	public void setComptes(Collection<Compte> comptes) {
 		this.comptes = comptes;
+	}
+
+	@Override
+	public String toString() {
+		return "Client [codeClient=" + codeClient + ", nomClient=" + nomClient + ", prenomClient=" + prenomClient
+				+ ", identifiant=" + identifiant + ", password=" + password + "]";
 	}
 }
