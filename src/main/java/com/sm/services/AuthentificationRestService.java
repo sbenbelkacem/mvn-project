@@ -10,12 +10,5 @@ import com.sm.metier.ClientMetier;
 
 @RestController
 public class AuthentificationRestService {
-	@Autowired
-	private ClientMetier clientMetier;
 	
-	@RequestMapping(value="/authentifiate",method=RequestMethod.GET)
-
-	public boolean VerifieIdentite(@RequestParam("identifiant") Long id, @RequestParam("password") String password) {
-		return clientMetier.authentifiateClient(id, password);
-	}
 }
