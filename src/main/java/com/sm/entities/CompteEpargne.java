@@ -1,5 +1,6 @@
 package com.sm.entities;
 
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.DiscriminatorValue;
@@ -12,12 +13,17 @@ public class CompteEpargne extends Compte {
 
 	
 
-	public CompteEpargne(String codeCompte, Date dateCreation, Double solde, Double taux) {
-		super(codeCompte, dateCreation, solde);
+	
+	
+	
+
+	public CompteEpargne(String codeCompte, Date dateCreation, Double solde, Client client,
+			Collection<Operation> operations, Double taux) {
+		super(codeCompte, dateCreation, solde, client, operations);
 		this.taux = taux;
 	}
-	
-	
+
+
 
 	public CompteEpargne() {
 		super();
@@ -25,9 +31,7 @@ public class CompteEpargne extends Compte {
 
 
 
-	public CompteEpargne(String codeCompte, Date dateCreation, Double solde) {
-		super(codeCompte, dateCreation, solde);
-	}
+
 
 
 

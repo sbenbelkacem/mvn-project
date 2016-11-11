@@ -47,7 +47,7 @@ public class ClientMetierImpl implements ClientMetier {
 	}
 
 	@Override
-	public boolean authentifiateClient(Long id, String password) {
+	public long authentifiateClient(Long id, String password) {
 		
 		PasswordEncoder encoder = new Md5PasswordEncoder();
 	    String hashedPass = encoder.encodePassword(password, null);
@@ -55,9 +55,9 @@ public class ClientMetierImpl implements ClientMetier {
 	    for (Client client:clients)
 	    {	
 	    	  if (client.getIdentifiant().equals(id) && client.getPassword().equals(hashedPass))
-	    		  return true;
+	    		  return client.getCodeClient();
 	    }
-		return false;
+		return 0;
 	}
 
 }

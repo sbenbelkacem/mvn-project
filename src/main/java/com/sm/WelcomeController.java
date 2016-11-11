@@ -1,5 +1,6 @@
 package com.sm;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sm.dao.ClientRepository;
 import com.sm.entities.Client;
+import com.sm.entities.Compte;
 import com.sm.metier.ClientMetier;
 
 @Controller
@@ -20,10 +22,22 @@ public class WelcomeController {
 	@Autowired
 	private ClientMetier clientMetier;
 	
-	@RequestMapping(value="/authentifiate",method=RequestMethod.GET)
+	@RequestMapping(value="/authentifiate",method=RequestMethod.POST)
 
 	public String VerifieIdentite(@RequestParam("identifiant") Long id, @RequestParam("password") String password,Map<String, Object> model) {
-	if (clientMetier.authentifiateClient(id, password)==true) return "espacemembre";
+	if (clientMetier.authentifiateClient(id, password) > 0) {
+		
+	    Long codeClient = clientMetier.authentifiateClient(id, password);
+	    System.out.println(codeClient);
+		model.put("client", clientMetier.getClientById(codeClient));
+		
+//		List<Compte> liste = (List<Compte>) clientMetier.getClientById(codeClient).getComptes();
+//		
+//		for (int i=0;i<liste.get(0).get)
+		
+		
+		return "espacemembre";
+	}
 	else 
 		{
 		model.put("error", "identifiant ou mot de passe incorrect");

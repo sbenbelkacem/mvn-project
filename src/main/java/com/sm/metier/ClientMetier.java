@@ -11,6 +11,6 @@ public interface ClientMetier {
 	public void deleteclient(Client c);
 	public Client getClientById(Long id);
 	public Collection<Client> getClients();
-	public boolean authentifiateClient(Long id, String password);
+	public long authentifiateClient(Long id, String password);
 
 }

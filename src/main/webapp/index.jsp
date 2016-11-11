@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<form action="authentifiate" method="get">
+<form action="authentifiate" method="post">
 <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">

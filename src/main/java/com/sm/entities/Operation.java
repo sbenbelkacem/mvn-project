@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.DiscriminatorType;
 
 @Entity
@@ -19,7 +21,10 @@ public class Operation implements Serializable {
 	private Long numeroOperation;
 	private Date dateOperation;
 	private Double montant;
+	@ManyToOne
+	@JoinColumn(name="COMPTE_OP")
 	private Compte compteOperation;
+	private String libelleOperation;
 	
 	public Operation(Long numeroOperation, Date dateOperation, Double montant, Compte compteOperation) {
 		super();
@@ -55,6 +60,12 @@ public class Operation implements Serializable {
 	}
 	public void setCompteOperation(Compte compteOperation) {
 		this.compteOperation = compteOperation;
+	}
+	public String getLibelleOperation() {
+		return libelleOperation;
+	}
+	public void setLibelleOperation(String libelleOperation) {
+		this.libelleOperation = libelleOperation;
 	}
 
 }

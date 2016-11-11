@@ -1,8 +1,10 @@
 package com.sm.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -10,6 +12,7 @@ import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
@@ -23,14 +26,28 @@ public class Compte implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="CODE_CLI")
 	private Client client;
+	@OneToMany(mappedBy="compteOperation",fetch=FetchType.LAZY)
+	private Collection<Operation> operations;
 	
-	public Compte(String codeCompte, Date dateCreation, Double solde) {
+	
+	
+	public Collection<Operation> getOperations() {
+		return operations;
+	}
+
+	public void setOperations(Collection<Operation> operations) {
+		this.operations = operations;
+	}
+
+	public Compte(String codeCompte, Date dateCreation, Double solde, Client client, Collection<Operation> operations) {
 		super();
 		this.codeCompte = codeCompte;
 		this.dateCreation = dateCreation;
 		this.solde = solde;
+		this.client = client;
+		this.operations = operations;
 	}
-	
+
 	public Compte() {
 		super();
 		// TODO Auto-generated constructor stub

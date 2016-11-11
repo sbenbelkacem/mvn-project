@@ -1,5 +1,6 @@
 package com.sm.entities;
 
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.DiscriminatorValue;
@@ -20,19 +21,12 @@ public class CompteCourant extends Compte {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CompteCourant(String codeCompte, Date dateCreation, Double solde) {
-		super(codeCompte, dateCreation, solde);
-		// TODO Auto-generated constructor stub
-	}
 
-
-
-	public CompteCourant(String codeCompte, Date dateCreation, Double solde, Double decouvert) {
-		super(codeCompte, dateCreation, solde);
+	public CompteCourant(String codeCompte, Date dateCreation, Double solde, Client client,
+			Collection<Operation> operations, Double decouvert) {
+		super(codeCompte, dateCreation, solde, client, operations);
 		this.decouvert = decouvert;
 	}
-
-
 
 	public void setDecouvert(Double decouvert) {
 		this.decouvert = decouvert;
