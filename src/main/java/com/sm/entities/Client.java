@@ -22,7 +22,7 @@ public class Client implements Serializable {
 	
 	public Client() {
 		super();
-		// TODO Auto-generated constructor stub
+		int y;
 	}
 
 	public Long getCodeClient() {
